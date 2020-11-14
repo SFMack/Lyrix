@@ -1,9 +1,9 @@
 ## Lyrix 
 # Virtual Battle Rap
-coming soon..
+coming soon...
 
 ## Functionality
-coming soon..
+coming soon...
 
 ## Status
 In Progress
@@ -15,7 +15,7 @@ MongoDB | Express | React | Node
 - heroku deployment
 
 ## How To Use
-coming soon..
+coming soon...
 
 ## Plans for the future
-coming soon..
+coming soon...
