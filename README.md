@@ -12,7 +12,7 @@ In Progress
 MongoDB | Express | React | Node
 
 ## Bugs
-- heroku deployment
+- heroku deployment (fixed)
 
 ## How To Use
 coming soon...
