@@ -57,6 +57,15 @@ export const getUsers = async (req, res) => {
   }
 };
 
+// GET
+// find a specific user
+// PRIVATE
+export const findUser = (req, res) => {
+  User.findById(req.user.id)
+    .select("-password")
+    .then((user) => res.json(user));
+};
+
 // POST
 // register new user
 // public
@@ -106,15 +115,6 @@ export const addUser = async (req, res) => {
       });
     });
   });
-};
-
-// GET
-// find a specific user
-// PRIVATE
-export const findUser = (req, res) => {
-  User.findById(req.user.id)
-    .select("-password")
-    .then((user) => res.json(user));
 };
 
 // DELETE
