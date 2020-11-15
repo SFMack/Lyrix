@@ -6,7 +6,7 @@ import User from "../models/User.js";
 
 // POST
 // user authentication
-// helper function
+// public
 export const userAuth = (req, res) => {
   // capture the credentials
   const { email, password } = req.body;
@@ -48,8 +48,13 @@ export const userAuth = (req, res) => {
 // POST
 // get all users
 // public ???
-export const getUsers = () => {
-  console.log("test");
+export const getUsers = async (req, res) => {
+  try {
+    const users = await User.find();
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
 };
 
 // POST
@@ -115,13 +120,23 @@ export const findUser = (req, res) => {
 // DELETE
 // delete a specific user
 // PRIVATE
-export const deleteUser = () => {
-  console.log("test");
+export const deleteUser = (req, res) => {
+  User.findById(req.params.id)
+    .then((user) => user.remove().then(() => res.json({ success: true })))
+    .catch((err) => res.status(404).json({ success: false, err }));
 };
 
 // PATCH
 // update user information
 // PRIVATE
-export const updateUser = () => {
-  console.log("test");
+export const updateUser = (req, res) => {
+  const user = req.body;
+
+  User.findByIdAndUpdate(req.user.id, user)
+    .then((updatedUser) => {
+      res.status(202).json({ success: true });
+    })
+    .catch((error) => {
+      res.status(404).json({ success: false, error });
+    });
 };
